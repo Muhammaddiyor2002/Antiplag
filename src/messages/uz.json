@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "AntiPlag",
+    "tagline": "Milliy Antiplagiat Tizimi"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "faq": "Savol-javoblar",
+    "news": "Yangiliklar",
+    "pricing": "Narxlar",
+    "contact": "Bog'lanish",
+    "guide": "Qo'llanma",
+    "corporate": "Tashkilotlar uchun",
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "dashboard": "Shaxsiy kabinet",
+    "logout": "Chiqish"
+  },
+  "home": {
+    "heroTitle": "Matningizni soniyalarda tekshiring",
+    "heroSubtitle": "AntiPlag — O'zbekiston talabalari, ilmiy xodimlar va tashkilotlar uchun professional plagiat va AI matn aniqlash platformasi.",
+    "checkPlagiarism": "Plagiatga tekshirish",
+    "aiDetector": "SI Detektor",
+    "stats": {
+      "users": "Faol foydalanuvchilar",
+      "checks": "Tekshirilgan hujjatlar",
+      "partners": "Hamkor tashkilotlar"
+    },
+    "about": {
+      "title": "Biz haqimizda",
+      "text": "AntiPlag — sun'iy intellekt va keng qidiruv algoritmlariga asoslangan plagiat aniqlash xizmati. Talabalardan tortib, yirik tashkilotlargacha — barcha hujjatlaringizni xavfsiz va aniq tekshiring."
+    },
+    "howItWorks": {
+      "title": "Qanday ishlaydi?",
+      "step1Title": "Hujjat yuklang",
+      "step1Text": ".doc, .docx, .pdf, .txt formatlardagi fayl yoki matn",
+      "step2Title": "Tahlil",
+      "step2Text": "Tizim matnni tozalab, internet va ichki bazadan qidiradi",
+      "step3Title": "Hisobot",
+      "step3Text": "Originallik foizi, AI detektor va manbalar ro'yxati",
+      "step4Title": "PDF va ulashish",
+      "step4Text": "Hisobotni PDF ko'rinishida yuklab oling yoki link orqali ulashing"
+    },
+    "ecosystem": {
+      "title": "Bizning ekosistema",
+      "card1Title": "Sun'iy intellekt va mashinali o'qitish",
+      "card1Text": "Yangi avlod modellari yordamida AI tomonidan yozilgan matnlarni aniqlaymiz",
+      "card2Title": "Aniq va batafsil hisobotlar",
+      "card2Text": "Har bir plagiat qism manbai bilan birga, professional PDF formatda",
+      "card3Title": "Ko'p darajali va keng qidirish",
+      "card3Text": "Internet, ilmiy bazalar va platformaning ichki repozitoriyasi",
+      "card4Title": "Ko'p tilda va har xil formatda",
+      "card4Text": "O'zbek, rus, ingliz tillari; .doc, .docx, .pdf, .txt fayllar"
+    },
+    "pricing": {
+      "title": "Tarif rejalari",
+      "subtitle": "O'zingizga mos tarifni tanlang"
+    },
+    "partners": {
+      "title": "Bizning hamkorlar"
+    },
+    "contact": {
+      "title": "Biz bilan bog'lanish",
+      "subtitle": "Savollaringiz bo'lsa, biz bilan bog'laning",
+      "name": "Ism",
+      "email": "Email",
+      "phone": "Telefon",
+      "message": "Xabar",
+      "send": "Yuborish",
+      "success": "Xabar yuborildi! Tez orada javob beramiz.",
+      "error": "Xato yuz berdi"
+    },
+    "newsletter": {
+      "title": "O'tkazib yubormang",
+      "subtitle": "Yangi xizmatlar va imkoniyatlardan birinchi bo'lib xabardor bo'ling",
+      "placeholder": "Email manzilingiz",
+      "subscribe": "Obuna bo'lish",
+      "success": "Obuna bo'ldingiz!"
+    }
+  },
+  "footer": {
+    "tagline": "Milliy Antiplagiat Tizimi",
+    "rights": "Barcha huquqlar himoyalangan",
+    "menu": "Menyu",
+    "company": "Kompaniya",
+    "support": "Yordam",
+    "social": "Ijtimoiy tarmoqlar"
+  },
+  "auth": {
+    "registerTitle": "Ro'yxatdan o'tish",
+    "loginTitle": "Tizimga kirish",
+    "forgotTitle": "Parolni tiklash",
+    "name": "Ism",
+    "surname": "Familiya",
+    "email": "Email",
+    "phone": "Telefon raqam",
+    "password": "Parol",
+    "confirmPassword": "Parolni tasdiqlang",
+    "identifier": "Email yoki telefon",
+    "remember": "Meni eslab qol",
+    "forgotPassword": "Parolni unutdim",
+    "submitRegister": "Ro'yxatdan o'tish",
+    "submitLogin": "Kirish",
+    "submitForgot": "Yuborish",
+    "haveAccount": "Hisobingiz bormi?",
+    "noAccount": "Hisobingiz yo'qmi?",
+    "agreeTerms": "Foydalanish shartlariga roziman",
+    "googleSignIn": "Google bilan kirish",
+    "telegramSignIn": "Telegram bilan kirish",
+    "or": "yoki",
+    "registerSuccess": "Muvaffaqiyatli ro'yxatdan o'tdingiz",
+    "loginSuccess": "Muvaffaqiyatli kirdingiz",
+    "loginFailed": "Email yoki parol xato",
+    "passwordResetSent": "Parolni tiklash uchun ko'rsatma email manzilingizga yuborildi"
+  },
+  "dashboard": {
+    "title": "Shaxsiy kabinet",
+    "newCheck": "Yangi tekshirish",
+    "stats": {
+      "totalChecks": "Jami tekshirishlar",
+      "avgOriginality": "O'rtacha originallik",
+      "checksLeft": "Qolgan tekshirishlar",
+      "currentPlan": "Joriy tarif"
+    },
+    "recentChecks": "Oxirgi tekshirishlar",
+    "noChecks": "Hali tekshirishlar yo'q",
+    "check": {
+      "title": "Yangi tekshirish",
+      "tabPlagiarism": "Plagiat tekshirish",
+      "tabAi": "SI Detektor",
+      "uploadFile": "Fayl yuklang",
+      "dropFile": "Yoki fayllaringizni shu yerga tashlang",
+      "supportedFormats": ".doc, .docx, .pdf, .txt — 10 MB gacha",
+      "orPaste": "Yoki matnni quyidagi maydonga joylashtiring",
+      "textPlaceholder": "Matnni shu yerga yozing yoki joylashtiring (kamida 50 so'z)",
+      "submit": "Tekshirishni boshlash",
+      "processing": "Tekshirilmoqda...",
+      "success": "Tekshirish yakunlandi",
+      "error": "Tekshirishda xatolik",
+      "limitReached": "Kunlik limit tugadi. Tarifni yangilang"
+    },
+    "report": {
+      "originality": "Originallik",
+      "plagiarism": "Plagiat",
+      "aiDetected": "SI tomonidan yozilgan",
+      "wordCount": "So'zlar soni",
+      "sourcesFound": "Topilgan manbalar",
+      "downloadPdf": "PDF yuklab olish",
+      "share": "Ulashish",
+      "fullText": "Hujjat matni",
+      "sources": "Manbalar",
+      "highlightLegend": "Rangli matn — plagiat aniqlangan qismlar"
+    },
+    "reports": {
+      "title": "Mening hisobotlarim",
+      "search": "Hujjat nomi bo'yicha qidirish",
+      "filterAll": "Barchasi",
+      "filterPlagiarism": "Plagiat",
+      "filterAi": "SI",
+      "noResults": "Hisobotlar topilmadi"
+    },
+    "profile": {
+      "title": "Profil",
+      "personal": "Shaxsiy ma'lumotlar",
+      "security": "Xavfsizlik",
+      "currentPassword": "Joriy parol",
+      "newPassword": "Yangi parol",
+      "confirmNewPassword": "Yangi parolni tasdiqlang",
+      "updateProfile": "Yangilash",
+      "updatePassword": "Parolni o'zgartirish",
+      "language": "Til",
+      "avatar": "Avatar",
+      "uploadAvatar": "Avatar yuklash",
+      "saved": "Saqlandi"
+    },
+    "subscription": {
+      "title": "Tarif rejam",
+      "current": "Hozirgi tarif",
+      "checksLeft": "Qolgan tekshirishlar",
+      "upgrade": "Tarifni yangilash",
+      "history": "To'lov tarixi",
+      "noPayments": "To'lovlar yo'q"
+    }
+  },
+  "admin": {
+    "title": "Admin panel",
+    "overview": "Umumiy ma'lumot",
+    "users": "Foydalanuvchilar",
+    "checks": "Tekshirishlar",
+    "news": "Yangiliklar",
+    "faq": "Savol-javoblar",
+    "partners": "Hamkorlar",
+    "contacts": "Aloqa xabarlari",
+    "settings": "Sozlamalar",
+    "stats": {
+      "totalUsers": "Jami foydalanuvchilar",
+      "totalChecks": "Jami tekshirishlar",
+      "todayChecks": "Bugungi tekshirishlar",
+      "monthlyChecks": "Oylik tekshirishlar"
+    }
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "create": "Yaratish",
+    "search": "Qidirish",
+    "filter": "Filtr",
+    "all": "Barchasi",
+    "actions": "Amallar",
+    "status": "Holat",
+    "date": "Sana",
+    "yes": "Ha",
+    "no": "Yo'q",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "lightMode": "Yorug'",
+    "darkMode": "Tungi",
+    "language": "Til"
+  },
+  "plans": {
+    "free": "Bepul",
+    "standard": "Standart",
+    "premium": "Premium",
+    "perMonth": "/ oyiga",
+    "free_perDay": "kuniga 3 ta tekshirish",
+    "standard_perMonth": "oyiga 50 ta tekshirish",
+    "premium_unlimited": "cheksiz tekshirish",
+    "select": "Tanlash",
+    "current": "Joriy reja",
+    "feature_pdf": "PDF hisobot",
+    "feature_history": "Tarix saqlash",
+    "feature_ai": "SI Detektor",
+    "feature_priority": "Ustuvor qo'llab-quvvatlash",
+    "feature_api": "API integratsiya"
+  },
+  "errors": {
+    "404": "Sahifa topilmadi",
+    "404Text": "Siz qidirayotgan sahifa mavjud emas",
+    "500": "Server xatosi",
+    "500Text": "Kechirasiz, xatolik yuz berdi",
+    "goHome": "Bosh sahifaga qaytish",
+    "unauthorized": "Avtorizatsiya talab qilinadi",
+    "forbidden": "Ruxsat berilmagan"
+  }
+}

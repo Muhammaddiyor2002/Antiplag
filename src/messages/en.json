@@ -1,0 +1,250 @@
+{
+  "brand": {
+    "name": "AntiPlag",
+    "tagline": "National Anti-Plagiarism System"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "faq": "FAQ",
+    "news": "News",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "guide": "Guide",
+    "corporate": "For organizations",
+    "login": "Sign in",
+    "register": "Sign up",
+    "dashboard": "Dashboard",
+    "logout": "Logout"
+  },
+  "home": {
+    "heroTitle": "Check your text in seconds",
+    "heroSubtitle": "AntiPlag — a professional plagiarism and AI-detection platform for students, researchers and organizations in Uzbekistan.",
+    "checkPlagiarism": "Check plagiarism",
+    "aiDetector": "AI Detector",
+    "stats": {
+      "users": "Active users",
+      "checks": "Documents checked",
+      "partners": "Partner organizations"
+    },
+    "about": {
+      "title": "About us",
+      "text": "AntiPlag is an AI-powered plagiarism detection service combining web search and machine learning. Check all your documents — student or corporate — securely and accurately."
+    },
+    "howItWorks": {
+      "title": "How it works?",
+      "step1Title": "Upload document",
+      "step1Text": ".doc, .docx, .pdf, .txt files or paste text",
+      "step2Title": "Analysis",
+      "step2Text": "The system cleans the text and searches the internet and the internal database",
+      "step3Title": "Report",
+      "step3Text": "Originality percentage, AI detector and source list",
+      "step4Title": "PDF & share",
+      "step4Text": "Download as PDF or share via link"
+    },
+    "ecosystem": {
+      "title": "Our ecosystem",
+      "card1Title": "Artificial intelligence & machine learning",
+      "card1Text": "Modern models for detecting AI-written text",
+      "card2Title": "Accurate detailed reports",
+      "card2Text": "Every match cited, professional PDF format",
+      "card3Title": "Multi-level wide search",
+      "card3Text": "Internet, scientific bases and the platform's internal repository",
+      "card4Title": "Multi-language, multi-format",
+      "card4Text": "Uzbek, Russian, English; .doc, .docx, .pdf, .txt"
+    },
+    "pricing": {
+      "title": "Pricing plans",
+      "subtitle": "Pick the plan that fits"
+    },
+    "partners": {
+      "title": "Our partners"
+    },
+    "contact": {
+      "title": "Contact us",
+      "subtitle": "Have questions? Get in touch",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "send": "Send",
+      "success": "Message sent! We'll respond soon.",
+      "error": "Error occurred"
+    },
+    "newsletter": {
+      "title": "Don't miss out",
+      "subtitle": "Be the first to learn about new features and offers",
+      "placeholder": "Your email address",
+      "subscribe": "Subscribe",
+      "success": "Subscribed!"
+    }
+  },
+  "footer": {
+    "tagline": "National Anti-Plagiarism System",
+    "rights": "All rights reserved",
+    "menu": "Menu",
+    "company": "Company",
+    "support": "Support",
+    "social": "Social networks"
+  },
+  "auth": {
+    "registerTitle": "Sign up",
+    "loginTitle": "Sign in",
+    "forgotTitle": "Reset password",
+    "name": "First name",
+    "surname": "Last name",
+    "email": "Email",
+    "phone": "Phone number",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "identifier": "Email or phone",
+    "remember": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "submitRegister": "Sign up",
+    "submitLogin": "Sign in",
+    "submitForgot": "Send",
+    "haveAccount": "Already have an account?",
+    "noAccount": "No account yet?",
+    "agreeTerms": "I agree with the terms of service",
+    "googleSignIn": "Sign in with Google",
+    "telegramSignIn": "Sign in with Telegram",
+    "or": "or",
+    "registerSuccess": "Successfully signed up",
+    "loginSuccess": "Signed in successfully",
+    "loginFailed": "Wrong email or password",
+    "passwordResetSent": "Password reset instructions were sent to your email"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "newCheck": "New check",
+    "stats": {
+      "totalChecks": "Total checks",
+      "avgOriginality": "Avg. originality",
+      "checksLeft": "Checks left",
+      "currentPlan": "Current plan"
+    },
+    "recentChecks": "Recent checks",
+    "noChecks": "No checks yet",
+    "check": {
+      "title": "New check",
+      "tabPlagiarism": "Plagiarism check",
+      "tabAi": "AI Detector",
+      "uploadFile": "Upload file",
+      "dropFile": "Or drop your files here",
+      "supportedFormats": ".doc, .docx, .pdf, .txt — up to 10 MB",
+      "orPaste": "Or paste text below",
+      "textPlaceholder": "Type or paste your text here (min. 50 words)",
+      "submit": "Start check",
+      "processing": "Processing...",
+      "success": "Check completed",
+      "error": "Check failed",
+      "limitReached": "Daily limit reached. Upgrade your plan"
+    },
+    "report": {
+      "originality": "Originality",
+      "plagiarism": "Plagiarism",
+      "aiDetected": "AI-written",
+      "wordCount": "Word count",
+      "sourcesFound": "Sources found",
+      "downloadPdf": "Download PDF",
+      "share": "Share",
+      "fullText": "Document text",
+      "sources": "Sources",
+      "highlightLegend": "Colored text — plagiarism detected"
+    },
+    "reports": {
+      "title": "My reports",
+      "search": "Search by document name",
+      "filterAll": "All",
+      "filterPlagiarism": "Plagiarism",
+      "filterAi": "AI",
+      "noResults": "No reports found"
+    },
+    "profile": {
+      "title": "Profile",
+      "personal": "Personal info",
+      "security": "Security",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmNewPassword": "Confirm new password",
+      "updateProfile": "Update",
+      "updatePassword": "Change password",
+      "language": "Language",
+      "avatar": "Avatar",
+      "uploadAvatar": "Upload avatar",
+      "saved": "Saved"
+    },
+    "subscription": {
+      "title": "My subscription",
+      "current": "Current plan",
+      "checksLeft": "Checks left",
+      "upgrade": "Upgrade plan",
+      "history": "Payment history",
+      "noPayments": "No payments"
+    }
+  },
+  "admin": {
+    "title": "Admin panel",
+    "overview": "Overview",
+    "users": "Users",
+    "checks": "Checks",
+    "news": "News",
+    "faq": "FAQ",
+    "partners": "Partners",
+    "contacts": "Messages",
+    "settings": "Settings",
+    "stats": {
+      "totalUsers": "Total users",
+      "totalChecks": "Total checks",
+      "todayChecks": "Today's checks",
+      "monthlyChecks": "Monthly checks"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "actions": "Actions",
+    "status": "Status",
+    "date": "Date",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "lightMode": "Light",
+    "darkMode": "Dark",
+    "language": "Language"
+  },
+  "plans": {
+    "free": "Free",
+    "standard": "Standard",
+    "premium": "Premium",
+    "perMonth": "/ month",
+    "free_perDay": "3 checks per day",
+    "standard_perMonth": "50 checks per month",
+    "premium_unlimited": "unlimited checks",
+    "select": "Select",
+    "current": "Current",
+    "feature_pdf": "PDF report",
+    "feature_history": "History",
+    "feature_ai": "AI Detector",
+    "feature_priority": "Priority support",
+    "feature_api": "API integration"
+  },
+  "errors": {
+    "404": "Page not found",
+    "404Text": "The page you're looking for doesn't exist",
+    "500": "Server error",
+    "500Text": "Sorry, something went wrong",
+    "goHome": "Go home",
+    "unauthorized": "Authentication required",
+    "forbidden": "Access denied"
+  }
+}
