@@ -83,6 +83,7 @@ export async function checkPlagiarism(rawText: string): Promise<PlagResult> {
   const highlights: PlagHighlight[] = [];
 
   let plagSentenceCount = 0;
+  let cursor = 0; // Tracks position in `text` to anchor highlights for duplicate sentences.
 
   for (let i = 0; i < sentences.length; i++) {
     const sentence = sentences[i];
@@ -111,9 +112,13 @@ export async function checkPlagiarism(rawText: string): Promise<PlagResult> {
       }
     }
 
+    // Always advance the cursor past this sentence so duplicate-sentence
+    // highlights map to their actual occurrence rather than the first one.
+    const idx = text.indexOf(sentence, cursor);
+    if (idx >= 0) cursor = idx + sentence.length;
+
     if (matched) {
       plagSentenceCount++;
-      const idx = text.indexOf(sentence);
       if (idx >= 0) {
         const sourceIndex = sourceMap.has(matched.url) ? Array.from(sourceMap.keys()).indexOf(matched.url) : sourceMap.size;
         highlights.push({

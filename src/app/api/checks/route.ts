@@ -52,9 +52,28 @@ export async function POST(req: Request) {
   const user = await prisma.user.findUnique({ where: { id: session.user.id } });
   if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
 
-  if (user.checksLeft !== -1 && user.checksLeft <= 0 && user.plan === "FREE") {
-    return NextResponse.json({ message: "Limit tugadi. Tarifni yangilang" }, { status: 403 });
+  // Atomic decrement before any work — prevents TOCTOU race where multiple
+  // concurrent requests all pass the limit check before any decrement runs.
+  // PREMIUM plan is unlimited (no decrement). FREE/STANDARD must have checksLeft > 0.
+  let creditConsumed = false;
+  if (user.plan !== "PREMIUM") {
+    const updated = await prisma.user.updateMany({
+      where: { id: user.id, plan: { not: "PREMIUM" }, checksLeft: { gt: 0 } },
+      data: { checksLeft: { decrement: 1 } },
+    });
+    if (updated.count === 0) {
+      return NextResponse.json({ message: "Limit tugadi. Tarifni yangilang" }, { status: 403 });
+    }
+    creditConsumed = true;
   }
+
+  // Refund the credit if we early-return after consumption.
+  const refund = async () => {
+    if (creditConsumed) {
+      await prisma.user.update({ where: { id: user.id }, data: { checksLeft: { increment: 1 } } });
+      creditConsumed = false;
+    }
+  };
 
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
@@ -68,10 +87,12 @@ export async function POST(req: Request) {
 
   if (file && file.size > 0) {
     if (file.size > MAX_FILE_SIZE) {
+      await refund();
       return NextResponse.json({ message: "Fayl 10 MB dan katta" }, { status: 413 });
     }
     const ext = `.${file.name.toLowerCase().split(".").pop() ?? ""}`;
     if (!ALLOWED_FILE_TYPES.includes(ext as (typeof ALLOWED_FILE_TYPES)[number])) {
+      await refund();
       return NextResponse.json({ message: "Qo'llab-quvvatlanmaydigan format" }, { status: 415 });
     }
     const buffer = Buffer.from(await file.arrayBuffer());
@@ -85,6 +106,7 @@ export async function POST(req: Request) {
     try {
       textContent = await extractTextFromBuffer(file.name, buffer);
     } catch (e) {
+      await refund();
       return NextResponse.json(
         { message: e instanceof Error ? e.message : "Faylni o'qib bo'lmadi" },
         { status: 422 }
@@ -95,12 +117,14 @@ export async function POST(req: Request) {
     fileName = "Yopishtirilgan matn";
     fileSize = Buffer.byteLength(text, "utf-8");
   } else {
+    await refund();
     return NextResponse.json({ message: "Fayl yoki matn yuboring" }, { status: 400 });
   }
 
   textContent = cleanText(textContent);
   const wordCount = countWords(textContent);
   if (wordCount < 30) {
+    await refund();
     return NextResponse.json({ message: "Kamida 30 so'z kerak" }, { status: 400 });
   }
 
@@ -150,9 +174,7 @@ export async function POST(req: Request) {
     },
   });
 
-  if (user.plan === "FREE" && user.checksLeft > 0) {
-    await prisma.user.update({ where: { id: user.id }, data: { checksLeft: { decrement: 1 } } });
-  }
+  // checksLeft was atomically decremented above before any work; nothing to do here.
 
   return NextResponse.json({ id: check.id }, { status: 201 });
 }

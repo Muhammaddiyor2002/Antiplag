@@ -72,13 +72,14 @@ export async function detectAi(rawText: string): Promise<AiResult> {
   }));
 
   const highlights: AiResult["highlights"] = [];
+  let cursor = 0;
   for (let i = 0; i < sentences.length; i++) {
+    const sentence = sentences[i];
+    const idx = text.indexOf(sentence, cursor);
+    if (idx >= 0) cursor = idx + sentence.length;
     const prob = Math.max(0, Math.min(100, Math.round(overall + (rnd() - 0.5) * 25)));
-    if (prob > 60) {
-      const idx = text.indexOf(sentences[i]);
-      if (idx >= 0) {
-        highlights.push({ start: idx, end: idx + sentences[i].length, type: "ai", similarity: prob });
-      }
+    if (prob > 60 && idx >= 0) {
+      highlights.push({ start: idx, end: idx + sentence.length, type: "ai", similarity: prob });
     }
   }
 
