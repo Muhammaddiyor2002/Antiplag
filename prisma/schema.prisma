@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  phone         String?   @unique
+  password      String?
+  avatar        String?
+  role          Role      @default(USER)
+  emailVerified DateTime?
+  language      String    @default("uz")
+  plan          Plan      @default(FREE)
+  checksLeft    Int       @default(3)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  checks        Check[]
+  payments      Payment[]
+  sessions      Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Check {
+  id            String      @id @default(cuid())
+  userId        String
+  fileName      String
+  fileUrl       String
+  fileSize      Int
+  textContent   String      @db.Text
+  wordCount     Int
+  type          CheckType
+  status        CheckStatus @default(PENDING)
+  plagiarismPct Float?
+  aiPct         Float?
+  reportUrl     String?
+  highlights    Json?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  sources       Source[]
+  user          User        @relation(fields: [userId], references: [id])
+}
+
+model Source {
+  id       String  @id @default(cuid())
+  checkId  String
+  title    String
+  url      String?
+  matchPct Float
+  snippets Json?
+  check    Check   @relation(fields: [checkId], references: [id], onDelete: Cascade)
+}
+
+model News {
+  id        String   @id @default(cuid())
+  title     String
+  titleRu   String?
+  titleEn   String?
+  slug      String   @unique
+  content   String   @db.Text
+  contentRu String?  @db.Text
+  contentEn String?  @db.Text
+  image     String?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Faq {
+  id         String  @id @default(cuid())
+  question   String
+  questionRu String?
+  questionEn String?
+  answer     String  @db.Text
+  answerRu   String? @db.Text
+  answerEn   String? @db.Text
+  order      Int     @default(0)
+}
+
+model Partner {
+  id    String  @id @default(cuid())
+  name  String
+  logo  String
+  url   String?
+  order Int     @default(0)
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id        String        @id @default(cuid())
+  userId    String
+  amount    Float
+  plan      Plan
+  status    PaymentStatus @default(PENDING)
+  provider  String?
+  createdAt DateTime      @default(now())
+  user      User          @relation(fields: [userId], references: [id])
+}
+
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String @db.Text
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Plan {
+  FREE
+  STANDARD
+  PREMIUM
+}
+
+enum CheckType {
+  PLAGIARISM
+  AI_DETECTION
+}
+
+enum CheckStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
