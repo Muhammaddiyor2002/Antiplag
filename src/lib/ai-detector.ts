@@ -23,15 +23,17 @@ function pseudoRandom(seed: number): () => number {
 async function openaiClassify(text: string): Promise<number | null> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
+  const baseUrl = process.env.OPENAI_API_BASE || "https://api.openai.com/v1";
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
   try {
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+    const res = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model,
         messages: [
           {
             role: "system",

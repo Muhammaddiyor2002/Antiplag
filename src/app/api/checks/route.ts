@@ -98,11 +98,16 @@ export async function POST(req: Request) {
     const buffer = Buffer.from(await file.arrayBuffer());
     fileName = file.name;
     fileSize = file.size;
-    await ensureUploadDir();
-    const safeName = `${Date.now()}-${file.name.replace(/[^A-Za-z0-9._-]/g, "_")}`;
-    const filePath = path.join(UPLOAD_DIR, safeName);
-    await fs.writeFile(filePath, buffer);
-    fileUrl = `/uploads/${safeName}`;
+    try {
+      await ensureUploadDir();
+      const safeName = `${Date.now()}-${file.name.replace(/[^A-Za-z0-9._-]/g, "_")}`;
+      const filePath = path.join(UPLOAD_DIR, safeName);
+      await fs.writeFile(filePath, buffer);
+      fileUrl = `/uploads/${safeName}`;
+    } catch {
+      // Ephemeral fallback (e.g. Vercel serverless environment)
+      fileUrl = "";
+    }
     try {
       textContent = await extractTextFromBuffer(file.name, buffer);
     } catch (e) {
