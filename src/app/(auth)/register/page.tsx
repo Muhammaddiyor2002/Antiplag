@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -26,6 +26,7 @@ export default function RegisterPage() {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm<RegisterInput>({ resolver: zodResolver(registerSchema), defaultValues: { agree: false } });
 
@@ -134,7 +135,17 @@ export default function RegisterPage() {
             {errors.confirmPassword ? <span className="text-xs text-destructive">{errors.confirmPassword.message}</span> : null}
           </div>
           <div className="flex items-start gap-2">
-            <Checkbox id="agree" {...register("agree")} />
+            <Controller
+              name="agree"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  id="agree"
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              )}
+            />
             <Label htmlFor="agree" className="text-sm font-normal leading-relaxed">
               {t("agreeTerms")}
             </Label>

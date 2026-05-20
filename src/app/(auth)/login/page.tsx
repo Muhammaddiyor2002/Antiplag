@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -26,8 +26,9 @@ export default function LoginPage() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm<LoginInput>({ resolver: zodResolver(loginSchema) });
+  } = useForm<LoginInput>({ resolver: zodResolver(loginSchema), defaultValues: { remember: false } });
 
   async function onSubmit(values: LoginInput) {
     setLoading(true);
@@ -87,7 +88,17 @@ export default function LoginPage() {
             {errors.password ? <span className="text-xs text-destructive">{errors.password.message}</span> : null}
           </div>
           <div className="flex items-center gap-2">
-            <Checkbox id="remember" {...register("remember")} />
+            <Controller
+              name="remember"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  id="remember"
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              )}
+            />
             <Label htmlFor="remember" className="text-sm font-normal">{t("remember")}</Label>
           </div>
           <Button type="submit" disabled={loading} variant="gradient" size="lg">
