@@ -138,7 +138,11 @@
       "processing": "Tekshirilmoqda...",
       "success": "Tekshirish yakunlandi",
       "error": "Tekshirishda xatolik",
-      "limitReached": "Kunlik limit tugadi. Tarifni yangilang"
+      "limitReached": "Kunlik limit tugadi. Tarifni yangilang",
+      "pdfLimitError": "Vercel serverless cheklovi tufayli PDF fayllarni faqat 4 MB gacha yuklash mumkin. Iltimos, fayl matnini nusxalab yopishtiring yoki hajmini kamaytiring.",
+      "libraryLoadingError": "Word kutubxonasi yuklanmagan. Iltimos, sahifani yangilang va qayta urining.",
+      "noTextError": "Fayldan hech qanday matn topilmadi.",
+      "payloadTooLarge": "Fayl hajmi juda katta (Vercel cheklovi). Iltimos, fayl matnini nusxalab yopishtiring."
     },
     "report": {
       "originality": "Originallik",

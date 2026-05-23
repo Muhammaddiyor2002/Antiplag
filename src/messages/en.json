@@ -138,7 +138,11 @@
       "processing": "Processing...",
       "success": "Check completed",
       "error": "Check failed",
-      "limitReached": "Daily limit reached. Upgrade your plan"
+      "limitReached": "Daily limit reached. Upgrade your plan",
+      "pdfLimitError": "Due to Vercel serverless limitations, PDF files can only be uploaded up to 4 MB. Please copy and paste the text or reduce the file size.",
+      "libraryLoadingError": "Word library not loaded. Please refresh the page and try again.",
+      "noTextError": "No text found in the file.",
+      "payloadTooLarge": "File size is too large (Vercel limit). Please copy and paste the text."
     },
     "report": {
       "originality": "Originality",

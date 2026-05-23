@@ -79,6 +79,8 @@ export async function POST(req: Request) {
   const file = formData.get("file") as File | null;
   const text = formData.get("text") as string | null;
   const type = (formData.get("type") as string | null) ?? "PLAGIARISM";
+  const customFileName = formData.get("fileName") as string | null;
+  const customFileSizeStr = formData.get("fileSize") as string | null;
 
   let textContent = "";
   let fileName = "";
@@ -119,8 +121,9 @@ export async function POST(req: Request) {
     }
   } else if (text && text.trim()) {
     textContent = text;
-    fileName = "Yopishtirilgan matn";
-    fileSize = Buffer.byteLength(text, "utf-8");
+    fileName = customFileName || "Yopishtirilgan matn";
+    const parsedSize = customFileSizeStr ? parseInt(customFileSizeStr, 10) : 0;
+    fileSize = parsedSize || Buffer.byteLength(text, "utf-8");
   } else {
     await refund();
     return NextResponse.json({ message: "Fayl yoki matn yuboring" }, { status: 400 });
