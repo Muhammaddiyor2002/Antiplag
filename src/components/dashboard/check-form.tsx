@@ -57,7 +57,7 @@ export function CheckForm() {
         if (ext === ".docx" || ext === ".txt") {
           let extractedText = "";
           if (ext === ".docx") {
-            const mammoth = (window as any).mammoth;
+            const mammoth = (window as unknown as { mammoth?: { extractRawText(options: { arrayBuffer: ArrayBuffer }): Promise<{ value: string }> } }).mammoth;
             if (!mammoth) {
               throw new Error(t("libraryLoadingError"));
             }
@@ -84,10 +84,10 @@ export function CheckForm() {
 
       const res = await fetch("/api/checks", { method: "POST", body: fd });
       
-      let data: any = {};
+      let data: { id?: string; message?: string } = {};
       const contentType = res.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
-        data = await res.json();
+        data = await res.json() as { id?: string; message?: string };
       } else {
         if (res.status === 413) {
           throw new Error(t("payloadTooLarge"));
@@ -98,7 +98,11 @@ export function CheckForm() {
 
       if (!res.ok) throw new Error(data?.message ?? t("error"));
       toast.success(t("success"));
-      router.push(`/dashboard/reports/${data.id}`);
+      if (data.id) {
+        router.push(`/dashboard/reports/${data.id}`);
+      } else {
+        throw new Error(t("error"));
+      }
     } catch (e) {
       toast.error(e instanceof Error ? e.message : t("error"));
     } finally {
