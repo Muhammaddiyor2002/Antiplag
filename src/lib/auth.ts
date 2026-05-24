@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
           id: user.id,
           email: user.email,
           name: user.name,
-          image: user.avatar ?? undefined,
+          image: user.avatar ?? user.image ?? undefined,
           role: user.role,
         };
       },
@@ -55,11 +55,18 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = (user as { id: string }).id;
         token.role = ((user as { role?: "USER" | "ADMIN" }).role ?? "USER");
-      } else if (token?.email && !token.id) {
-        const dbUser = await prisma.user.findUnique({ where: { email: token.email } });
+      }
+      
+      // Keep token role and image up-to-date with database on every JWT verification
+      if (token?.email) {
+        const dbUser = await prisma.user.findUnique({
+          where: { email: token.email },
+          select: { id: true, role: true, avatar: true, image: true },
+        });
         if (dbUser) {
           token.id = dbUser.id;
           token.role = dbUser.role;
+          token.picture = dbUser.avatar ?? dbUser.image ?? undefined;
         }
       }
       return token;
@@ -68,6 +75,9 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token.id as string;
         session.user.role = token.role as "USER" | "ADMIN";
+        if (token.picture) {
+          session.user.image = token.picture as string;
+        }
       }
       return session;
     },
